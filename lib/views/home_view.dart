@@ -43,10 +43,15 @@ class HomeView extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(child: CategoryListView()),
-            SliverToBoxAdapter(child: SizedBox(
-              height: 32,
-            ),),
-            SliverToBoxAdapter(child: NewsListView()),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 32,
+              ),
+            ),
+            NewsListView(),
+            // const SliverToBoxAdapter(
+            //   child: NewsListView(),
+            // ),
           ],
         ),
       ),
