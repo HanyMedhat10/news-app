@@ -1,5 +1,7 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
 import 'package:news_app/models/article_model.dart';
 import 'package:news_app/widgets/news_list_view.dart';
 
@@ -7,9 +9,10 @@ import '../services/news_services.dart';
 
 class NewsListViewBuilder extends StatefulWidget {
   const NewsListViewBuilder({
-    super.key,
-  });
-
+    Key? key,
+    required this.category,
+  }) : super(key: key);
+  final String category;
   @override
   State<NewsListViewBuilder> createState() => _NewsListViewBuilderState();
 }
@@ -20,7 +23,7 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
   @override
   void initState() {
     super.initState();
-    future = NewsService(Dio()).getNews();
+    future = NewsService(Dio()).getTopHeadlines(category: widget.category);
   }
 
   @override
