@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/article_model.dart';
 
@@ -14,7 +15,12 @@ class NewsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () async {
+        Uri url = Uri.parse(articleModel.url);
+        if (await canLaunchUrl(url)) {
+          launchUrl(url);
+        }
+      },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
