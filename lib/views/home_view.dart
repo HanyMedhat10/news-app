@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/category_list_view.dart';
 
-import '../widgets/news_list_view.dart';
 import '../widgets/news_list_view_builder.dart';
 
 class HomeView extends StatelessWidget {
@@ -59,4 +58,3 @@ class HomeView extends StatelessWidget {
     );
   }
 }
-
