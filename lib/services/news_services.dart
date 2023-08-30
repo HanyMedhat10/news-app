@@ -7,7 +7,7 @@ class NewsService {
   final String apiKey = '9cdd34ed241641fe8a429bec1adc5b85';
   final String baseApi = 'https://newsapi.org/v2/everything?';
   final String path =
-      'https://newsapi.org/v2/everything?country=us&apiKey=9cdd34ed241641fe8a429bec1adc5b85&category=general';
+      'https://newsapi.org/v2/top-headlines?country=us&apiKey=9cdd34ed241641fe8a429bec1adc5b85';
   NewsService(this.dio);
 
   Future<List<ArticleModel>> getNews() async {
