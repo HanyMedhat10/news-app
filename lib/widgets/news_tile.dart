@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/article_model.dart';
@@ -13,26 +14,28 @@ class NewsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        
-      },
+      onTap: () {},
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
-            child: articleModel.image != null
-                ? Image.network(
-                    articleModel.image!,
-                    // 'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
-                    height: 200,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  )
-                : const SizedBox(
-                    height: 200,
-                    width: double.infinity,
-                  ),
+            child: CachedNetworkImage(
+              imageUrl: articleModel.image.toString(),
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
+            // child: articleModel.image != null
+            //     ? Image.network(
+            //         articleModel.image!,
+            //         height: 200,
+            //         width: double.infinity,
+            //         fit: BoxFit.cover,
+            //       )
+            //     : const SizedBox(
+            //         height: 200,
+            //         width: double.infinity,
+            //       ),
           ),
           const SizedBox(
             height: 12,
