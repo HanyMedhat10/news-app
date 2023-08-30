@@ -1,42 +1,14 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_app/widgets/news_tile.dart';
 
 import '../models/article_model.dart';
-import '../services/news_services.dart';
 
-class NewsListView extends StatefulWidget {
+class NewsListView extends StatelessWidget {
   const NewsListView({
-    super.key,
+    super.key, required this.articles,
   });
 
-  @override
-  State<NewsListView> createState() => _NewsListViewState();
-}
-
-class _NewsListViewState extends State<NewsListView> {
-  List<ArticleModel> articles = [];
-  @override
-  void initState() {
-    //first cycle|step (State)
-    //run before build state
-    // call once
-    // TODO: implement initState
-    super.initState();
-    getGeneralNews();
-  }
-
-  Future<void> getGeneralNews() async {
-    articles = await NewsService(Dio()).getNews();
-    setState(() {});
-  }
-
-  @override
-  void dispose() {
-    // last cycle|step (State)
-    // TODO: implement dispose
-    super.dispose();
-  }
+  final List<ArticleModel> articles;
 
   @override
   Widget build(BuildContext context) {
@@ -64,4 +36,5 @@ class _NewsListViewState extends State<NewsListView> {
     //       );
     //     });
   }
+
 }
